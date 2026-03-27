@@ -1,0 +1,12 @@
+# Pastas de compilação
+[Bb]in/
+[Oo]bj/
+
+# Configurações com senhas reais
+appsettings.json
+
+# Arquivos temporários do VS Code e Visual Studio
+.vs/
+.vscode/
+*.user
+*.zip
