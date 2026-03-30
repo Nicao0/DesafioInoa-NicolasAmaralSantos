@@ -11,10 +11,10 @@ public class EmailService {
         _emailSettings = senhas.Value;
     }
 
-    public async Task EnviarEmail(string assunto, string mensagem) {
+    public async Task SendEmail(string assunto, string mensagem) {
         var mail = new MailMessage();
-        mail.From = new MailAddress(_emailSettings.EmailOrigem); // quem manda
-        mail.To.Add(_emailSettings.EmailDestino); // quem recebe
+        mail.From = new MailAddress(_emailSettings.EmailOrigem!); // quem manda
+        mail.To.Add(_emailSettings.EmailDestino!); // quem recebe
         mail.Subject = assunto;
         mail.Body = mensagem;
 

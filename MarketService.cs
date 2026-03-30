@@ -12,15 +12,12 @@ public class MarketService {
 
     public async Task<decimal> GetPrice(string nomeAcao) {
         string url = $"https://brapi.dev/api/quote/{nomeAcao}";
-        var resultado = await _httpClient.GetFromJsonAsync<RespostaApi>(url); // Espera o resultado da internet e encaixa na classe RespostaApi
+        var resultado = await _httpClient.GetFromJsonAsync<ApiResponse>(url); // Espera o resultado da internet e encaixa na classe ApiResponse
+        
+        if (resultado?.Results == null || resultado.Results.Count == 0) {
+            throw new Exception($"Ativo '{nomeAcao}' não encontrado na Brapi.");
+        }
+
         return resultado.Results[0].RegularMarketPrice; // Entrando na lista que a Brapi enviou e pegando o primeiro e único item que é o preço
     }
-}
-
-public class StockInfo {
-    public decimal RegularMarketPrice { get; set; } // Preço da Ação
-}
-
-public class RespostaApi {
-    public List<StockInfo>? Results { get; set; }
 }

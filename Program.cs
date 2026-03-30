@@ -33,17 +33,3 @@ builder.Services.AddHostedService<Worker>();
 
 var host = builder.Build();
 host.Run();
-
-public class AlertSettings {
-    public string? Ativo { get; set; } // o ? é para transformar a variável em um Nullable Type e remover os alertas
-    public decimal PrecoVenda { get; set; }
-    public decimal PrecoCompra { get; set; }
-}
-
-public class EmailSettings {
-    public string? ServidorSmtp { get; set; }
-    public int Porta { get; set; }
-    public string? EmailOrigem { get; set; }
-    public string? Senha { get; set; }
-    public string? EmailDestino { get; set; }
-}
