@@ -17,6 +17,12 @@ if (!deuCertoCompra || !deuCertoVenda) { // Se não foi possível converter algu
 
 var builder = Host.CreateApplicationBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddSimpleConsole(opcoes => {
+    opcoes.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+    opcoes.SingleLine = true;
+});
+
 builder.Services.AddSingleton(new AlertSettings {
     Ativo = ativo,
     PrecoVenda = precoVenda,
